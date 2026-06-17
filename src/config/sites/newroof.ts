@@ -113,7 +113,7 @@ export const newroofConfig: SiteConfig = {
       name: 'Corrugated Metal',
       textureUrl: '/materials/metal-corrugated.jpg',
       description: 'Ribbed panels, rural/farmhouse',
-      promptValue: 'corrugated metal roofing with ribbed panels',
+      promptValue: 'corrugated metal roofing with a repeating sinusoidal wave profile — NOT standing seam, NOT flat panels. The corrugations run vertically down the slope in a continuous wavy ribbed pattern, like classic barn or farmhouse metal roofing. Exposed fasteners at each rib crest. The wave depth creates strong shadow lines across the entire roof surface.',
     },
     {
       id: 'stone-coated-steel',
@@ -155,14 +155,14 @@ export const newroofConfig: SiteConfig = {
       name: 'Concrete Tile',
       textureUrl: '/materials/concrete-tile.jpg',
       description: 'Flat or profiled, durable',
-      promptValue: 'concrete tile roofing with flat or profiled tiles',
+      promptValue: 'concrete tile roofing with heavy interlocking profiled tiles — each tile has a raised S-curve or low-barrel profile with deep shadow gaps between rows. Looks similar to clay tile but with a slightly flatter, heavier appearance. Tiles are staggered in regular overlapping rows with visible mortar ridges at hips and the ridge line.',
     },
     {
       id: 'flat-tpo',
       name: 'Flat / TPO',
       textureUrl: '/materials/flat-tpo.jpg',
       description: 'Membrane, commercial/modern',
-      promptValue: 'flat TPO membrane roofing with a smooth, light-colored surface',
+      promptValue: 'flat TPO membrane roofing — the roof surface is completely flat or very low slope with zero pitch visible. The membrane is smooth, white or light grey, with heat-welded seams running in straight lines across the surface. There are no shingles, no tiles, no raised panels — just a clean flat membrane surface. Appropriate for modern flat-roof architecture or commercial buildings.',
     },
   ],
 
