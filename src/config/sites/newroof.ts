@@ -106,7 +106,7 @@ export const newroofConfig: SiteConfig = {
       name: 'Horizontal Snap-Lock Metal',
       textureUrl: '/materials/metal-snap-lock.jpg',
       description: 'Modern horizontal panels, concealed fasteners',
-      promptValue: 'horizontal snap-lock metal roofing panels with clean concealed fasteners and modern horizontal lines',
+      promptValue: 'horizontal lap-seam metal roofing panels installed in overlapping horizontal rows — NOT standing seam, NOT vertical panels. Each panel runs horizontally across the roof with a clean flat profile and concealed fasteners. The result looks like horizontal wood siding but in metal. Modern, clean, low-profile horizontal lines running parallel to the ground across the entire roof surface.',
     },
     {
       id: 'metal-corrugated',
