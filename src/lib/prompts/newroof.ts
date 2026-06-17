@@ -52,7 +52,7 @@ export function buildNewRoofPrompt(config: NewRoofPromptConfig): string {
   }
 
   // Hard constraint — always last
-  prompt += ' Preserve the existing roofline, pitch, chimney positions, vents, dormers, and all structural elements exactly as they are. Do not alter the house walls, windows, doors, landscaping, or surroundings. Make it photorealistic with accurate material texture, lighting, and shadows.';
+  prompt += ' CRITICAL CONSTRAINT — ROOF ONLY: Change ONLY the roof surface. Every other surface on this house must remain pixel-perfect identical to the original photo: the siding color, siding material, siding texture, and siding pattern must not change at all — do not re-color or re-texture any wall, siding panel, or facade surface. The window frames, trim, fascia, soffit, foundation walls, retaining walls, front steps, driveway, walkway, landscaping, planters, trees, grass, sky, and all surrounding environment must be preserved exactly as photographed. The roof color change must stop cleanly at the roof-edge and not bleed into any adjacent surface. Make the roof photorealistic with accurate material texture, lighting, and shadows matching the original photo lighting.';
 
   return prompt;
 }
@@ -68,5 +68,5 @@ function buildSurprisePrompt(): string {
   ];
 
   const variation = variations[Math.floor(Math.random() * variations.length)];
-  return variation + ' Preserve the existing roofline, pitch, chimney positions, vents, and structural elements exactly. Do not alter walls, landscaping, or surroundings.';
+  return variation + ' CRITICAL CONSTRAINT — ROOF ONLY: Change ONLY the roof surface. The siding, walls, windows, trim, foundation, driveway, landscaping, and all surroundings must remain exactly as they appear in the photo. The roof color and material change must stop at the roof edge and not bleed into any wall or siding surface. Preserve the existing roofline, pitch, chimney positions, vents, and structural elements exactly. Make the roof photorealistic with accurate material texture and shadows matching the original photo lighting.';
 }
