@@ -119,6 +119,14 @@ export function VisualizePage() {
     const originalUrl = URL.createObjectURL(uploadedFile);
     setOriginalImageUrl(originalUrl);
 
+    // FIX 2: Scroll to result panel IMMEDIATELY — user sees spinner right away
+    // on both mobile (single column) and desktop (right panel always visible)
+    if (resultPanelRef.current) {
+      setTimeout(() => {
+        resultPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 50);
+    }
+
     try {
       const prompt = buildNewRoofPrompt({
         colorId: selectedColorId,
@@ -138,13 +146,6 @@ export function VisualizePage() {
       // Increment counter on success
       incrementRenders();
       setRendersUsed(getRendersUsed());
-
-      // Mobile: scroll to result panel
-      if (window.innerWidth < 768 && resultPanelRef.current) {
-        setTimeout(() => {
-          resultPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
     } catch (err) {
       URL.revokeObjectURL(originalUrl);
       setOriginalImageUrl(null);
@@ -657,8 +658,8 @@ function ColorSwatchCard({
   return (
     <button
       onClick={onSelect}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -672,6 +673,9 @@ function ColorSwatchCard({
         transform: selected ? 'scale(1.05)' : 'scale(1)',
         transition: 'border-color 0.15s, transform 0.15s',
         fontFamily: 'inherit',
+        // FIX 1: Eliminates 300ms tap delay on mobile — single tap registers immediately
+        touchAction: 'manipulation',
+        WebkitTapHighlightColor: 'transparent',
       }}
     >
       <div style={{ width: '56px', height: '56px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
@@ -844,6 +848,9 @@ function MaterialCard({
         fontFamily: 'inherit',
         textAlign: 'left',
         transition: 'border-color 0.15s, background 0.15s',
+        // FIX 1: Eliminates 300ms tap delay on mobile
+        touchAction: 'manipulation',
+        WebkitTapHighlightColor: 'transparent',
       }}
     >
       <div style={{ width: '48px', height: '48px', borderRadius: '6px', overflow: 'hidden', flexShrink: 0 }}>
@@ -898,6 +905,9 @@ function OptionChipGroup({
                 background: selected ? '#FAECE7' : '#FFFFFF',
                 color: selected ? '#993C1D' : '#666666',
                 transition: 'all 0.15s',
+                // FIX 1: Eliminates 300ms tap delay on mobile
+                touchAction: 'manipulation',
+                WebkitTapHighlightColor: 'transparent',
               }}
             >
               {opt.label}
@@ -915,8 +925,8 @@ function SurpriseMeButton({ active, onToggle }: { active: boolean; onToggle: () 
   return (
     <button
       onClick={onToggle}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
       style={{
         width: '100%',
         padding: '12px',
@@ -930,6 +940,9 @@ function SurpriseMeButton({ active, onToggle }: { active: boolean; onToggle: () 
         color: '#D85A30',
         transition: 'background 0.15s',
         boxSizing: 'border-box',
+        // FIX 1: Eliminates 300ms tap delay on mobile
+        touchAction: 'manipulation',
+        WebkitTapHighlightColor: 'transparent',
       }}
     >
       ✨ Surprise Me {active ? '(active — click to cancel)' : ''}

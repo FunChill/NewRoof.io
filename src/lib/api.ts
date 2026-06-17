@@ -1,4 +1,4 @@
-const RAILWAY_URL = import.meta.env.VITE_RAILWAY_API_URL as string;
+const RAILWAY_URL = import.meta.env.VITE_RAILWAY_API_URL as string | undefined;
 
 // ── Canvas compression + base64 encoding ────────────────────────────────────
 export async function compressImage(file: File): Promise<Blob> {
@@ -60,6 +60,15 @@ export async function generateRoofRender(
 
   // 2. Convert to base64
   const imageBase64 = await blobToBase64(compressed);
+
+  // Guard: catch missing env var before it becomes a fetch to 'undefined/render'
+  if (!RAILWAY_URL) {
+    throw new Error(
+      'VITE_RAILWAY_API_URL is not set. ' +
+      'Add it to .env.local and restart the dev server, ' +
+      'or set it in Vercel → Settings → Environment Variables.'
+    );
+  }
 
   // 3. POST JSON to Railway
   const response = await fetch(`${RAILWAY_URL}/render`, {

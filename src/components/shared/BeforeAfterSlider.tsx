@@ -84,8 +84,9 @@ export function BeforeAfterSlider({
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
     isHorizontalDrag.current = null; // undecided until first move
-    setPosition(getPositionFromX(e.touches[0].clientX));
-  }, [getPositionFromX]);
+    // NOTE: Don't snap position on touchstart — wait for confirmed horizontal drag
+    // so vertical scroll taps don't accidentally move the slider
+  }, []);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
     const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
