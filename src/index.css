@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ─── Brand Tokens ─────────────────────────────────────────────────── */
+:root {
+  --color-bg: #FAF9F7;
+  --color-surface: #FFFFFF;
+  --color-accent: #D85A30;
+  --color-accent-light: #FAECE7;
+  --color-accent-dark: #993C1D;
+  --color-warm-tint: #FFF8F5;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #666666;
+  --color-text-muted: #AAAAAA;
+  --color-border: #E8E5E0;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Container ────────────────────────────────────────────────────── */
+.container {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* ─── Prevent any section from causing horizontal bleed ──────────────── */
+section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* ─── Typography ───────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
